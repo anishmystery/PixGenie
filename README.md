@@ -4,6 +4,5 @@ PixGenie is a web application designed to generate stunning images based on user
 
 ## Features
 
-- **Image Generation:** Generate images based on keywords or themes provided by the user.
-- **Download Options:** Easily download generated images for offline use.
-- **Responsive Design:** Optimized for both desktop and mobile devices.
+- **Image Generation:** Generate images based on keywords or writeup content provided by the user.
+- **Download Options:** Easily download generated images for use in blogs, social media posts, or other written content.
