@@ -1,0 +1,25 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/pix-genie/node_modules
+/pix-genie/.pnp
+/pix-genie/.pnp.js
+
+# testing
+/pix-genie/coverage
+
+# production
+/pix-genie/build
+/myvenv
+
+# misc
+.DS_Store
+/pix-genie/.env
+/pix-genie/.env.local
+/pix-genie/.env.development.local
+/pix-genie/.env.test.local
+/pix-genie/.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
