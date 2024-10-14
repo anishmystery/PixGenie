@@ -14,7 +14,7 @@ app = FastAPI()
 # Enable CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["localhost:3000"], # TODO: Update this to React App's URL in production
+    allow_origins=["https://pix-genie.vercel.app"],
     allow_methods=["GET", "OPTIONS", "PATCH", "DELETE", "POST", "PUT"],
     allow_headers=["X-CSRF-Token", "X-Requested-With", "Accept", "Accept-Version", "Content-Length", "Content-MD5", "Content-Type", "Date", "X-Api-Version"],
 )
