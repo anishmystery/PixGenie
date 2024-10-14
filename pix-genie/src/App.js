@@ -48,8 +48,8 @@ function Header() {
         </Typography>
       </Box>
       <Typography variant="h6" gutterBottom sx={{ color: "#333A42" }}>
-        Generate stunning, unique, and free images for your blog posts within
-        seconds.
+        Generate stunning, high quality free images for your projects, blogs or
+        social media posts within seconds.
       </Typography>
     </Box>
   );
@@ -80,10 +80,14 @@ function GenerateImagesFromKeywords() {
 
   async function handleFormSubmit(e) {
     e.preventDefault();
-    if (!content) setValidationMessage("Blog content is required");
+    if (!content) {
+      setValidationMessage("Content is required");
+      return;
+    }
     setLoading(true);
     setError("");
     setValidationMessage("");
+    setImages([]);
 
     try {
       const response = await axios.post(
@@ -108,12 +112,14 @@ function GenerateImagesFromKeywords() {
           }
         );
         const responseImages = unsplash_response.data.results;
-        imageList.push(
-          responseImages[Math.floor(Math.random() * responseImages.length)]
-        );
+        if (responseImages.length > 0)
+          imageList.push(
+            responseImages[Math.floor(Math.random() * responseImages.length)]
+          );
       }
       setLoading(false);
-      setImages(imageList);
+      if (imageList.length > 0) setImages(imageList);
+      else setError("No images could be generated for the given content.");
     } catch (error) {
       setLoading(false);
       if (error.response) {
@@ -167,7 +173,7 @@ function GenerateImagesFromKeywords() {
       >
         <TextField
           variant="outlined"
-          label="Blog Content"
+          label="Content"
           margin="normal"
           multiline
           rows={10}
@@ -176,6 +182,7 @@ function GenerateImagesFromKeywords() {
           value={content}
           error={!!validationMessage}
           helperText={validationMessage}
+          placeholder="Enter your text here.."
         ></TextField>
         <Button
           type="submit"
@@ -196,7 +203,7 @@ function GenerateImagesFromKeywords() {
           {error}
         </Typography>
       </Box>
-      {images && (
+      {images.length > 0 && (
         <ImageList
           images={images}
           onDialogOpen={handleDialogOpen}
