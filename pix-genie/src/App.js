@@ -86,9 +86,12 @@ function GenerateImagesFromKeywords() {
     setValidationMessage("");
 
     try {
-      const response = await axios.post("/api/generate", {
-        content: content,
-      });
+      const response = await axios.post(
+        "https://pixgenie.onrender.com/api/generate",
+        {
+          content: content,
+        }
+      );
       const keywordsResponse = JSON.parse(response.data.keywords);
       const keywords = keywordsResponse.keywords;
       const imageList = [];
