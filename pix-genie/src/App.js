@@ -177,7 +177,19 @@ function GenerateImagesFromKeywords() {
           margin="normal"
           multiline
           rows={10}
-          sx={{ width: "60%" }}
+          sx={{
+            width: "60%",
+            "& .MuiOutlinedInput-root": {
+              "&.Mui-focused fieldset": {
+                borderColor: "#7012DA",
+              },
+            },
+            "& .MuiInputLabel-root": {
+              "&.Mui-focused": {
+                color: "#7012DA",
+              },
+            },
+          }}
           onChange={handleChangeContent}
           value={content}
           error={!!validationMessage}
@@ -273,7 +285,9 @@ function ImageList({ images, onDialogOpen }) {
           padding: "16px",
           marginTop: "32px",
           display: "flex",
+          flexWrap: "wrap",
           justifyContent: "space-evenly",
+          gap: "16px",
         }}
       >
         {images.map((image, index) => (
